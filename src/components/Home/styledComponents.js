@@ -10,7 +10,7 @@ export const HomeContainer = styled.div`
 
 export const HomeHeading = styled.h1`
   color: #334155;
-  font-size: 42px;
+  font-size: 52px;
   font-family: 'Roboto';
 `
 export const HomePara = styled.p`
@@ -30,12 +30,11 @@ export const Button = styled.button`
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 6px;
-  cursor: pointer;
 `
 
 export const Image = styled.img`
-  height: 300px;
-  width: 75%;
+  height: 350px;
+  width: 90%;
   margin-top: 30px;
 `
 

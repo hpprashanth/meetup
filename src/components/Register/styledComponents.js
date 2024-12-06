@@ -70,7 +70,6 @@ export const RegisterButton = styled.button`
   padding-right: 20px;
   border-radius: 6px;
   margin-top: 20px;
-  cursor: pointer;
 `
 export const ErrorMsg = styled.p`
   color: #ff0b37;

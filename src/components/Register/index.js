@@ -13,7 +13,7 @@ import {
   Select,
   RegisterButton,
   ErrorMsg,
-} from './styledComponents'
+} from './style'
 
 const topicsList = [
   {
@@ -44,10 +44,10 @@ const Register = props => (
       const {
         name,
         topic,
-        updateName,
-        updateTopic,
+        changeName,
+        changeTopic,
         showError,
-        changeRegisterStatus,
+        registerName,
         updateError,
       } = value
 
@@ -57,18 +57,18 @@ const Register = props => (
         if (name !== '' && topic !== '') {
           const {history} = props
           history.replace('/')
-          changeRegisterStatus()
+          registerName()
         } else {
           updateError()
         }
       }
 
       const onChangeName = event => {
-        updateName(event.target.value)
+        changeName(event.target.value)
       }
 
       const onChangeTopic = event => {
-        updateTopic(event.target.value)
+        changeTopic(event.target.value)
       }
 
       return (

@@ -12,30 +12,7 @@ import {
   Image,
   Name,
   Topic,
-} from './styledComponents'
-
-const topicsList = [
-  {
-    id: 'ARTS_AND_CULTURE',
-    displayText: 'Arts and Culture',
-  },
-  {
-    id: 'CAREER_AND_BUSINESS',
-    displayText: 'Career and Business',
-  },
-  {
-    id: 'EDUCATION_AND_LEARNING',
-    displayText: 'Education and Learning',
-  },
-  {
-    id: 'FASHION_AND_BEAUTY',
-    displayText: 'Fashion and Learning',
-  },
-  {
-    id: 'GAMES',
-    displayText: 'Games',
-  },
-]
+} from './style'
 
 const Home = props => {
   const onRegister = () => {
@@ -46,20 +23,16 @@ const Home = props => {
   return (
     <RegisterContext.Consumer>
       {value => {
-        const {registerStatus, name, topic} = value
-        // console.log(isRegistered)
-        const topicName =
-          topicsList[topicsList.findIndex(eachTopic => eachTopic.id === topic)]
-            .displayText
-
+        const {isRegistered, name, topic} = value
+        console.log(isRegistered)
         return (
           <div>
             <Header />
 
-            {registerStatus === true ? (
+            {isRegistered === true ? (
               <HomeContainer>
                 <Name>Hello {name}</Name>
-                <Topic>Welcome to {topicName}</Topic>
+                <Topic>Welcome to {topic}</Topic>
                 <Image
                   src="https://assets.ccbp.in/frontend/react-js/meetup/meetup-img.png"
                   alt="meetup"

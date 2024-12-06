@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 
-export const HeaderNav = styled.nav`
+export const Nav = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  padding: 10px;
+  align-items: center;
+  min-height: 10vh;
+  padding: 20px;
+`
+export const Logo = styled.img`
+  height: 50px;
+  width: 150px;
 `
 
-export const WebsiteLogo = styled.img`
-  height: 40px;
-  width: 160px;
-  margin: 20px;
-`
+export default Logo

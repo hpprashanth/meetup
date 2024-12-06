@@ -1,67 +1,61 @@
 import {Component} from 'react'
-import {Redirect, Route, Switch} from 'react-router-dom'
 
-import Home from './components/Home'
+import {Route, Switch} from 'react-router-dom'
 import Register from './components/Register'
-import RegisterContext from './context/RegisterContext'
+import Home from './components/Home'
+
 import NotFound from './components/NotFound'
+
+import RegisterContext from './context/RegisterContext'
 
 import './App.css'
 
 // These are the lists used in the application. You can move them to any component needed.
 
 // Replace your code here
-const App = () => <h1>Hello World</h1>
-
-export default App
-
 class App extends Component {
   state = {
-    registerStatus: false,
-    topic: 'ARTS_AND_CULTURE',
-    showError: false,
     name: '',
+    topic: 'Arts and Culture',
+    isRegistered: false,
+    showError: false,
   }
 
-  changeRegisterStatus = () => {
-    this.setState(prevState => ({
-      registerStatus: !prevState.registerStatus,
-    }))
+  changeName = name => {
+    this.setState({name})
+  }
+
+  changeTopic = topic => {
+    this.setState({topic})
+  }
+
+  registerName = () => {
+    this.setState({isRegistered: true})
   }
 
   updateError = () => {
-    this.setState(prevState => ({showError: !prevState.showError}))
-  }
-
-  updateName = enteredName => {
-    this.setState({name: enteredName})
-  }
-
-  updateTopic = topicValue => {
-    this.setState({topic: topicValue})
+    this.setState({showError: true})
   }
 
   render() {
-    const {registerStatus, name, topic, showError} = this.state
-
+    const {name, topic, isRegistered, showError} = this.state
     return (
       <RegisterContext.Provider
         value={{
-          registerStatus,
           name,
           topic,
+          isRegistered,
           showError,
-          changeRegisterStatus: this.changeRegisterStatus,
+          changeName: this.changeName,
+          changeTopic: this.changeTopic,
+          registerName: this.registerName,
           updateError: this.updateError,
-          updateName: this.updateName,
-          updateTopic: this.updateTopic,
         }}
       >
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
-          <Route path="/not-found" component={NotFound} />
-          <Redirect to="/not-found" />
+          <NotFound />
         </Switch>
       </RegisterContext.Provider>
     )
